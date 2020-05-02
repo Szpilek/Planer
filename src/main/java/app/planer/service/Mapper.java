@@ -1,5 +1,6 @@
 package app.planer.service;
 
+import app.planer.controller.requests.EventRequest;
 import app.planer.model.*;
 import app.planer.repository.entity.*;
 import org.springframework.stereotype.Component;
@@ -90,6 +91,15 @@ public class Mapper {
                 .date(it.getDate())
                 .eventType(it.getEventType())
                 .isEventActive(it.getIsEventActive())
+                .build();
+    }
+
+    public EventEntity map(EventRequest eventRequest){
+        return EventEntity.builder()
+                .date(eventRequest.getDate())
+                .eventType(eventRequest.getEventType())
+                .name(eventRequest.getName())
+                .isEventActive(eventRequest.getIsEventActive())
                 .build();
     }
 }

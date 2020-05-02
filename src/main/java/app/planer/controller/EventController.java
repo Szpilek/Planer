@@ -1,19 +1,23 @@
 package app.planer.controller;
 
+import app.planer.controller.requests.EventRequest;
 import app.planer.model.Event;
 import app.planer.service.EventService;
 import lombok.AllArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.time.LocalDateTime;
 import java.util.List;
 
 @AllArgsConstructor
 @RestController
 @RequestMapping("/event")
+@Validated
 public class EventController {
     private final EventService eventService;
 
@@ -30,7 +34,7 @@ public class EventController {
     }
 
     @PostMapping
-    void addEvent(@RequestBody Event event) {
+    void addEvent(@RequestBody @Valid EventRequest event) {
         eventService.addEvent(event);
     }
 

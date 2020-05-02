@@ -1,5 +1,6 @@
 package app.planer.service;
 
+import app.planer.controller.requests.EventRequest;
 import app.planer.model.Event;
 import app.planer.model.Meal;
 import app.planer.repository.EventRepository;
@@ -26,7 +27,7 @@ public class EventService {
         return transform(mapper::map, eventEntities);
     }
 
-    public void addEvent(Event event){
+    public void addEvent(EventRequest event){
         EventEntity eventEntity = mapper.map(event);
         eventRepository.save(eventEntity);
     }

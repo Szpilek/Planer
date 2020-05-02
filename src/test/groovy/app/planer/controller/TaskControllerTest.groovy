@@ -33,7 +33,7 @@ class TaskControllerTest extends Specification {
         1 * taskService.getTasks(dateBefore, dateAfter) >> tasks >> Exception
 
         when:
-        def result = taskController.getItems(dateBefore, dateAfter)
+        def result = taskController.getTasks(dateBefore, dateAfter)
 
         then:
         result == tasks
